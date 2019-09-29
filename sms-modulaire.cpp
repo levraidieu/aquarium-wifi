@@ -5,20 +5,8 @@
 
 int smsModulaire1()
   {
-  Serial.begin(115200);
-  WiFi.begin(ssid, password);
-  Serial.println("");
-  while (WiFi.status() != WL_CONNECTED) {
-    Serial.print(".");
-    delay(500);
-  }
-  Serial.println("");// Debug
-  Serial.print("Connecte a ");// Debug
-  Serial.println(ssid);// Debug
-  Serial.print("IP adresse: ");// Debug
-  Serial.println(WiFi.localIP());// Debug
-  Serial.println("");
-  //
+
+  //  http://wittyboard.free.fr
   // certains caractères sont indésirables dans l'URL il faut l'encoder
   String sms = " essai de sms free-mobile \n a partir de Witty.";
   Serial.println(sms);
