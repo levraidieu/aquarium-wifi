@@ -3,29 +3,23 @@
 #include "etatRelais.h"
 
 //extern String header;
-int seetuup() {
+int initwifi() {
  
-  // Initialize the output variables as outputs
-  pinMode(portSortie5, OUTPUT);
-  pinMode(portSortie4, OUTPUT);
-  // Set outputs to LOW
-  digitalWrite(portSortie4, LOW);
-  digitalWrite(portSortie5, LOW);
+
 
   // Connect to Wi-Fi network with SSID and password
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
+  Serial.println("Connection a ");
+  Serial.print(ssid);
   WiFi.begin(ssid, password);
-  Serial.print("Connecting to ");
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
   // Print local IP address and start web server
-  Serial.println("");
   Serial.println("WiFi connecter.");
-  Serial.println("IP address: ");
+  Serial.println("address IP: ");
   Serial.println(WiFi.localIP());
+  
   server.begin();
 }
 

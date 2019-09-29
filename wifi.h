@@ -27,6 +27,6 @@ extern const int output4 ;
 
 
 int wikiki ( );
-int seetuup();
+int initwifi();
 
  #endif
