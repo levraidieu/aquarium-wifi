@@ -12,8 +12,10 @@ int declarationDesSorties ( ) {
       pinMode(portSortie5, OUTPUT);
 
 
+      digitalWrite( portSortie0, LOW);  
+      digitalWrite( portSortie1, LOW);
+      digitalWrite( portSortie2, LOW);  
+      digitalWrite( portSortie3, LOW);
       digitalWrite( portSortie4, LOW);  
       digitalWrite( portSortie5, LOW);
-
-
 };

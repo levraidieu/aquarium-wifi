@@ -1,14 +1,16 @@
 #include <ESP8266WiFi.h>
 #include "wifi.h"
+#include "etatRelais.h"
+
 //extern String header;
 int seetuup() {
-   Serial.begin(115200);
+ 
   // Initialize the output variables as outputs
-  pinMode(output5, OUTPUT);
-  pinMode(output4, OUTPUT);
+  pinMode(portSortie5, OUTPUT);
+  pinMode(portSortie4, OUTPUT);
   // Set outputs to LOW
-  digitalWrite(output5, LOW);
-  digitalWrite(output4, LOW);
+  digitalWrite(portSortie4, LOW);
+  digitalWrite(portSortie5, LOW);
 
   // Connect to Wi-Fi network with SSID and password
   Serial.print("Connecting to ");
@@ -53,19 +55,19 @@ int wikiki( ) {
             if (header.indexOf("GET /5/on") >= 0) {
               Serial.println("GPIO 5 on");
               output5State = "on";
-              digitalWrite(output5, HIGH);
+              digitalWrite(portSortie5, HIGH);
             } else if (header.indexOf("GET /5/off") >= 0) {
               Serial.println("GPIO 5 off");
               output5State = "off";
-              digitalWrite(output5, LOW);
+              digitalWrite(portSortie5, LOW);
             } else if (header.indexOf("GET /4/on") >= 0) {
               Serial.println("GPIO 4 on");
               output4State = "on";
-              digitalWrite(output4, HIGH);
+              digitalWrite(portSortie4, HIGH);
             } else if (header.indexOf("GET /4/off") >= 0) {
               Serial.println("GPIO 4 off");
               output4State = "off";
-              digitalWrite(output4, LOW);
+              digitalWrite(portSortie4, LOW);
             }
             
             // Display the HTML web page
