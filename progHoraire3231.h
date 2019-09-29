@@ -22,5 +22,7 @@ int filtre1OnOff ( );
 int filtre2OnOff ( );
 int filtre3OnOff ( );
 int thermometreInterieurETEHIVER ( ); //a modifier par rapport au date
-int progHoraire ( );
+
+
+int progHoraire ( );                  //reprend tout les ... du dessus 
   #endif

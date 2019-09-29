@@ -35,10 +35,17 @@ unsigned int localPort = 8084;
 String sms;
 
 
-//etat relais
+//declaration de sorties et etat relais
 #include "etatRelais.h"
-byte portSortie5 ;
+byte portSortie0 ;
+byte portSortie1 ;
+byte portSortie2 ;
+byte portSortie3 ;
 byte portSortie4 ;
+byte portSortie5 ;
+
+
+
 
 //prog horaire
 #include "progHoraire3231.h"
@@ -86,5 +93,5 @@ declarationDesSorties ( );
 void loop() {
   // put your main code here, to run repeatedly:
   wikiki ( );				//wifi.h
-  progHoraire ( );			//proghoraire3231
+  progHoraire ( );			//proghoraire ds3231
 }

@@ -18,8 +18,13 @@ extern boolean thermometre  ;
 extern boolean chauffeEau  ;
 extern int     bouton       ;
 
-extern  byte portSortie5 ;
+
+extern  byte portSortie0 ;
+extern  byte portSortie1 ;
+extern  byte portSortie2 ;
+extern  byte portSortie3 ;
 extern  byte portSortie4 ;
+extern  byte portSortie5 ;
 
 
 
