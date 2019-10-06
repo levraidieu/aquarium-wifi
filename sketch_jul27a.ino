@@ -80,6 +80,8 @@ int bouton = 0 ;
 
 #include "alarme.h"
 
+#include "temperature.h"
+
 
 void setup() {
   Serial.begin(115200);

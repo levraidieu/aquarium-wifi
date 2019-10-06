@@ -2,6 +2,10 @@
 #define __TEMPERATURE_H_
 
 
+int boot_capteur_temperature   ( );
+int demande_temperature_ds1820 ( );
+
+
 
 
 extern String sms;

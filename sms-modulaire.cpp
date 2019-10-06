@@ -12,10 +12,10 @@ int boot(){
 }
 
 int smstempDs1820(){
-	string sms = sondeTemperatureAqua + sondeTemperatureSalon ;
-	sms.replace(" ", "%20"); // encode URL espace " " par "%20"
-  	sms.replace("\n", "%0D%0A"); // encode URL a la ligne "\n" par "%0D%0A"
-    envoiSms(sms);
+	   string sms = sondeTemperatureAqua + sondeTemperatureSalon ;
+	   sms.replace(" ", "%20"); // encode URL espace " " par "%20"
+  	 sms.replace("\n", "%0D%0A"); // encode URL a la ligne "\n" par "%0D%0A"
+     envoiSms(sms);
 
 }
 
@@ -34,6 +34,11 @@ int smsModulaire1()
   Serial.println(sms);
   envoiSms(sms);
   }
+
+
+
+
+
 
 void envoiSms(String messageSms) {
 const char* host = "smsapi.free-mobile.fr";
