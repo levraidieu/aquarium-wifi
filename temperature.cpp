@@ -24,17 +24,33 @@ int boot_capteur_temperature ( ) {
 
 
 int demande_temperature_ds1820 ( ) {
-	sensors.requestTemperatures(); //Demande la température aux capteurs
-
-	if (sensors.getTempCByIndex(0) == -127) {
+	sensors.requestTemperatures( ); //Demande la température aux capteurs
+	int compteur_default = 1 ;
+	int sonde = 0 ;
+	for (compteur_default =0 ; compteur_default  != 20 ; compteur_default ++ ) {
+	while ( ( sensors.getTempCByIndex(sonde) == -127 )  ) {
+	//tant que capteur 127 ou compteur 32000 
 	Serial.println("Capteur 1 HS");
-	delay(1000); // pause de 1 secondes
+
+	/*
+	si comp 
+
+
+
+
+
+	*/
+	
+	// delay(1000); // pause de 1 secondes
+	}
+	}
+
 
 	else
 	{
     /* code */
     Serial.print("La température est: ");
- 	Serial.print(sensors.getTempCByIndex(0)); //affichage la température en celsius du capteur n°0
+ 	Serial.print(sensors.getTempCByIndex(0),DEC); //affichage la température en celsius du capteur n°0
  	Serial.println(" C°");
 	}
 
