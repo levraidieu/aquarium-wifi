@@ -4,6 +4,7 @@
 #include <ESP8266WiFi.h>        // pour la connexion WiFi. https://github.com/esp8266/Arduino
 #include <WiFiClientSecure.h>   // connexion https
 
+#include "etatRelais.h"
 /*
 sensors.getTempCByIndex(0) 					//capteur1
 sensors.getTempCByIndex(1) 					//capteur2

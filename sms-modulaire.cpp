@@ -4,15 +4,17 @@
 #include <Arduino.h>
 
 int boot(){
-	string sms ="boot ou reboot"
-	sms.replace(" ", "%20"); // encode URL espace " " par "%20"
+  	sms ="boot ou reboot";
+  	sms.replace(" ", "%20"); // encode URL remplace les espaces " " par "%20"
   	sms.replace("\n", "%0D%0A"); // encode URL a la ligne "\n" par "%0D%0A"
     envoiSms(sms);
-
+envoiSms(sms);
 }
 
 int smstempDs1820(){
-	   string sms = sondeTemperatureAqua + sondeTemperatureSalon ;
+	   int sondeTemperatureAqua; 
+     int sondeTemperatureSalon;
+     sms = sondeTemperatureAqua + sondeTemperatureSalon ;
 	   sms.replace(" ", "%20"); // encode URL espace " " par "%20"
   	 sms.replace("\n", "%0D%0A"); // encode URL a la ligne "\n" par "%0D%0A"
      envoiSms(sms);
@@ -28,7 +30,7 @@ int smsModulaire1()
 
   //  http://wittyboard.free.fr
   // certains caractères sont indésirables dans l'URL il faut l'encoder
-  String sms = " essai de sms free-mobile \n a partir de Witty.";
+  sms = " essai de sms free-mobile \n a partir de Witty.";
   Serial.println(sms);
   sms.replace(" ", "%20"); // encode URL espace " " par "%20"
   sms.replace("\n", "%0D%0A"); // encode URL a la ligne "\n" par "%0D%0A"
