@@ -33,6 +33,21 @@ int smsAlarme(){
                 sms.replace("\n", "%0D%0A"); // encode URL a la ligne "\n" par "%0D%0A"
                 envoiSms(sms);
                 }
+int smsAlarmeds1820hs(){
+                sms = "alarme sonde ds1820 HS";
+                sms.replace(" ", "%20"); // encode URL remplace les espaces " " par "%20"
+                sms.replace("\n", "%0D%0A"); // encode URL a la ligne "\n" par "%0D%0A"
+                envoiSms(sms);
+                }
+
+int smsAlarmeds1820supp30 (){
+                sms = "alarme sonde ds1820 plus de 30";
+                sms.replace(" ", "%20"); // encode URL remplace les espaces " " par "%20"
+                sms.replace("\n", "%0D%0A"); // encode URL a la ligne "\n" par "%0D%0A"
+                envoiSms(sms);
+                }
+
+
 
 
 int smsModulaire1(){

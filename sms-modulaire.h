@@ -15,6 +15,9 @@ int smstempDs1820();
 
 int smsiplocal();
 int smsAlarme();
+//int smsAlarmeds1820();
+int smsAlarmeds1820hs();
+int smsAlarmeds1820supp30 ();
 
 int smsModulaire1();
 void envoiSms(String messageSms);
