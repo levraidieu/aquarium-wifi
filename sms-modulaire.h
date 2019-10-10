@@ -12,6 +12,10 @@ extern String sms;
 
 int boot();
 int smstempDs1820();
+
+int smsiplocal();
+int smsAlarme();
+
 int smsModulaire1();
 void envoiSms(String messageSms);
 
