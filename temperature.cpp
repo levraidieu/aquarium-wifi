@@ -73,10 +73,16 @@ int temperatureAquariumOnOffRelais(){
         smsAlarmeds1820hs();
         }
     if (sensors.getTempCByIndex(0) >= 30  ) {
+        chauffeEau = 0 ;
         smsAlarmeds1820supp30();
         }
     if (sensors.getTempCByIndex(0) <= 24  ) {
-        chauffeEau = 1 ;
-        }
+        if ((t.mon >= 6 )&& (t.mon <= 9)) {
+            chauffeEau = 0 ;
+            }
+           else {
+            chauffeEau = 1 ;
+           }
+         }
 
     }
