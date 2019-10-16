@@ -32,30 +32,30 @@ int demande_temperature_ds1820 ( ) {
 //	for (compteur_default =0 ; compteur_default  != 20 ; compteur_default ++ ) {
 //	while ( ( sensors.getTempCByIndex(sonde) == -127 )  ) {
 		while ( ( sonde_en_defaut == 1 || sonde_compteur_defaut !=65000 )  ) {
-			//tant que capteur 127 ou compteur 32000
+			//tant que capteur 127 ou compteur 32000 
 			sensors.requestTemperatures( ); //Demande la température aux capteurs
 			sonde_en_defaut =0 ;
 			unsigned char sonde_nombre_test = 0 ;//0-255
 			for (sonde_nombre_test =0 ; sonde_nombre_test  != sonde_nombre ; sonde_nombre_test ++ ) {
 				if (sensors.getTempCByIndex(sonde_nombre_test) == -127) {
 					sonde_en_defaut = 1;
-				}
+				}	
 			}
 		sonde_compteur_defaut ++ ;
 			//Serial.println("Capteur 1 HS");
 
 		/*
-		si comp
+		si comp 
 
 
 
 
 
 		*/
-
+	
 		// delay(1000); // pause de 1 secondes
 		}
-
+	
 
 
 	//else
@@ -68,21 +68,3 @@ int demande_temperature_ds1820 ( ) {
 
 
  }
-int temperatureAquariumOnOffRelais(){
-    if (sensors.getTempCByIndex(0) == -127) {
-        smsAlarmeds1820hs();
-        }
-    if (sensors.getTempCByIndex(0) >= 30  ) {
-        chauffeEau = 0 ;
-        smsAlarmeds1820supp30();
-        }
-    if (sensors.getTempCByIndex(0) <= 24  ) {
-        if ((t.mon >= 6 )&& (t.mon <= 9)) {
-            chauffeEau = 0 ;
-            }
-           else {
-            chauffeEau = 1 ;
-           }
-         }
-
-    }

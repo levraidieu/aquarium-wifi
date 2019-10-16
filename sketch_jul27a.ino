@@ -1,5 +1,5 @@
 
-//  bibliotheque Wi-Fi pour le 8266 
+//  bibliotheque Wi-Fi pour le 8266
 #include <ESP8266WiFi.h>
 #include "wifi.h"
 
@@ -80,6 +80,8 @@ int bouton = 0 ;
 
 #include "alarme.h"
 
+#include "temperature.h"
+
 
 void setup() {
   Serial.begin(115200);
@@ -87,6 +89,7 @@ void setup() {
 
  smsModulaire1();
   envoiSms(sms);
+  smsiplocal();
 declarationDesSorties ( );
 }
 

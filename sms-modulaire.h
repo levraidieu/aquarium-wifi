@@ -10,6 +10,15 @@ extern const char* password;
 extern unsigned int localPort;
 extern String sms;
 
+int boot();
+int smstempDs1820();
+
+int smsiplocal();
+int smsAlarme();
+//int smsAlarmeds1820();
+int smsAlarmeds1820hs();
+int smsAlarmeds1820supp30 ();
+
 int smsModulaire1();
 void envoiSms(String messageSms);
 
