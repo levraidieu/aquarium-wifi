@@ -5,6 +5,13 @@
 #include <WiFiClientSecure.h>   // connexion https
 
 #include "etatRelais.h"
+#include "sms-modulaire.h"
+#include "wifi.h"
+#include "ds3231.h"
+
+   struct ts t; 
+//#include "progHoraire3231.h"
+
 /*
 sensors.getTempCByIndex(0) 					//capteur1
 sensors.getTempCByIndex(1) 					//capteur2
