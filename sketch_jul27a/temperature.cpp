@@ -9,7 +9,7 @@
 #include "wifi.h"
 #include "ds3231.h"
 
-   struct ts t; 
+extern  struct ts t; 
 //#include "progHoraire3231.h"
 
 /*
