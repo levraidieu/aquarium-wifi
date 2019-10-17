@@ -11,6 +11,10 @@
 //      Serial.print(t.min);
 //      Serial.print(".");
 //      Serial.println(t.sec);
+
+//      http://gilles.thebault.free.fr/spip.php?article53
+
+
 #ifndef __progHORAIRE3231_H_
 #define __progHORAIRE3231_H_
 
