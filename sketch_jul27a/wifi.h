@@ -26,7 +26,7 @@ extern const int output5 ;
 extern const int output4 ;
 
 
-int wikiki ( );
-int initwifi();
+int web_page ( );
+int init_wifi();
 
  #endif

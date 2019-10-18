@@ -85,7 +85,7 @@ int bouton = 0 ;
 
 void setup() {
   Serial.begin(115200);
- initwifi( );
+ init_wifi( );
 
  smsModulaire1();
   envoiSms(sms);
@@ -95,6 +95,6 @@ declarationDesSorties ( );
 
 void loop() {
   // put your main code here, to run repeatedly:
-  wikiki ( );				//wifi.h
+  web_page ( );				//wifi.h
   progHoraire ( );			//proghoraire ds3231
 }

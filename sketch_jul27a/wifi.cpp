@@ -3,7 +3,7 @@
 #include "etatRelais.h"
 
 //extern String header;
-int initwifi() {
+int init_wifi() {
  
 
 
@@ -24,7 +24,7 @@ int initwifi() {
   server.begin();
 }
 
-int wikiki( ) {
+int web_page( ) {
  WiFiClient client = server.available();   // Listen for incoming clients
 
   if (client) {                             // If a new client connects,
