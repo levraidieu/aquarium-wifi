@@ -1,4 +1,48 @@
+/*
+detecteur debordement
+detecteur eau haut
+detecteur eau niveau bas
 
+temperature aquarium
+temperature salon
+temperature balcon
+temperature exterieur
+
+lcd-sms
+  ip wan-lan
+  temperature
+  alerte
+    relais
+    horloge
+    horaire etatRelais
+
+prog-horaire
+  horloge ds3231
+  millis
+
+web
+  horodatage
+  lien thingspeak
+  affichage temperature
+  horaire marche/arret relais
+  activation desactivation relais (et si desactitoin un fois ou plusieur fois)
+  modification horaire
+
+boutonAquarium
+  defilement  date/horaire
+              detecteur
+              temperature
+              horaire relais on/off
+
+led
+  alarme
+  relais
+
+
+
+
+
+*/
 //  bibliotheque Wi-Fi pour le 8266
 #include <ESP8266WiFi.h>
 #include "wifi.h"
