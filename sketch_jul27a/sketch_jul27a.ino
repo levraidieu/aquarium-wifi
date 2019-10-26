@@ -41,6 +41,12 @@ led
 ntp
 
 
+broche
+  detecteur
+  lcd
+  clavier
+  relais
+
 
 */
 //  bibliotheque Wi-Fi pour le 8266

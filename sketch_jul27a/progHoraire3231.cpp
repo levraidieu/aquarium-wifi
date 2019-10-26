@@ -121,7 +121,44 @@ int thermometreInterieurETEHIVER ( ) {
   }
   };
 
+int desactivationLumiere () {
 
+};
+
+
+int nourritureWebMillis (){
+  time_millis_nourriture = (millis() + 3000 );
+  nourriture  = 1;
+  nourriture_activation_millis = 1;
+}
+
+/*int nourritureWebJourner (){
+  time_millis_nourriture = (millis() + 3000 );
+  nourriture  = 1;
+  nourriture_activation_millis = 1;
+  nourriture_activation_journer = 1;
+}
+*/
+
+
+int nourriture_exeptionnelle() {
+  if ( nourriture_activation_millis == 1){
+    if (( millis() - time_millis_nourriture) < 0)){
+      nourriture  = 1;
+    }
+    else if (( millis() - time_millis_nourriture) >= 0)){
+      nourriture  = 0;
+      nourriture_activation_millis == 0;
+    }
+
+  }
+
+
+int lumiereWebMillis (){
+  time_millis_lumiere = (millis() + 3000 );
+  nourriture  = 1;
+  nourriture_activation_millis = 1;
+}
 
 
 
