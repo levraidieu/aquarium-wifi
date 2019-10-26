@@ -40,6 +40,15 @@ int filtre3OnTm = 0;
 int filtre3OffTh = 20;
 int filtre3OffTm = 0;
 
+time_millis_nourriture
+boolean nourriture_activation_millis
+boolean nourriture_activation_millis
+
+time_millis_lumiere
+temp_desactivation_lumiere_en_millis
+boolean lumiere_activation_millis
+
+ lumiere_activation_journer
 
 
 
@@ -126,6 +135,11 @@ int desactivationLumiere () {
 };
 
 
+////////////////////////////////////////////////////////////////////
+////////     nourriture web    /////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+
 int nourritureWebMillis (){
   time_millis_nourriture = (millis() + 3000 );
   nourriture  = 1;
@@ -154,10 +168,40 @@ int nourriture_exeptionnelle() {
   }
 
 
+////////////////////////////////////////////////////////////////////
+///////////////  lumiere web  //////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
 int lumiereWebMillis (){
-  time_millis_lumiere = (millis() + 3000 );
-  nourriture  = 1;
-  nourriture_activation_millis = 1;
+  time_millis_lumiere = (millis() + temp_desactivation_lumiere_en_millis );
+  xxxxxxxnoms du relaislumiere  = 1;
+  lumiere_activation_millis = 1;
+}
+
+int lumiere_web_heure(){
+  if ( lumiere_activation_millis == 1 ){
+    if (( millis() - time_millis_lumiere) < 0)){
+      lumiere  = 1;
+    }
+    else if (( millis() - time_millis_lumiere) >= 0)){
+      lumiere  = 0;
+      lumiere_activation_millis == 0;
+      //lumiere_activation_journer == 0;
+    }
+  }
+}
+
+int lumiere_web_journer(){
+  if ( lumiere_activation_journer == 1 ){
+    if (( millis() - time_millis_lumiere) < 0)){
+      lumiere  = 1;
+    }
+    else if (( millis() - time_millis_lumiere) >= 0)){
+      lumiere  = 0;
+      lumiere_activation_journer == 0;
+      //lumiere_activation_millis == 0;
+    }
+  }
 }
 
 
