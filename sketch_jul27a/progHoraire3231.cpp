@@ -48,7 +48,7 @@ time_millis_lumiere
 temp_desactivation_lumiere_en_millis
 boolean lumiere_activation_millis
 
- lumiere_activation_journer
+boolean lumiere_activation_journer
 
 
 
