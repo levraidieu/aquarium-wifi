@@ -40,12 +40,12 @@ int filtre3OnTm = 0;
 int filtre3OffTh = 20;
 int filtre3OffTm = 0;
 
-time_millis_nourriture
+long time_millis_nourriture
 boolean nourriture_activation_millis
 boolean nourriture_activation_millis
 
-time_millis_lumiere
-temp_desactivation_lumiere_en_millis
+long time_millis_lumiere
+long temp_desactivation_lumiere_en_millis
 boolean lumiere_activation_millis
 
 boolean lumiere_activation_journer
@@ -142,8 +142,8 @@ int desactivationLumiere () {
 
 int nourritureWebMillis (){
   time_millis_nourriture = (millis() + 3000 );
-  nourriture  = 1;
-  nourriture_activation_millis = 1;
+  nourriture  = 1;                      // relais nourriture en marche
+  nourriture_activation_millis = 1;     // activatio d'un drapeau nourriture
 }
 
 /*int nourritureWebJourner (){
@@ -156,11 +156,11 @@ int nourritureWebMillis (){
 
 
 int nourriture_exeptionnelle() {
-  if ( nourriture_activation_millis == 1){
-    if (( millis() - time_millis_nourriture) < 0)){
-      nourriture  = 1;
+  if ( nourriture_activation_millis == 1){                // verif si drapeau est active
+    if (( millis() - time_millis_nourriture) < 0)){       //verif si le temps c'est ecouler
+      nourriture  = 1;                                    // si condition vrai relais activer
     }
-    else if (( millis() - time_millis_nourriture) >= 0)){
+    else if (( millis() - time_millis_nourriture) >= 0)){ //si le temps est passer desativation du drapeau et du relais
       nourriture  = 0;
       nourriture_activation_millis == 0;
     }
