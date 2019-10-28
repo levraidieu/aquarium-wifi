@@ -44,6 +44,7 @@ long time_millis_nourriture
 boolean nourriture_activation_millis
 boolean nourriture_activation_millis
 
+boolean drapeau_prog_journaliere    // evite le conflit avec la prog jounaliere (s'active au debut de la journer)
 long time_millis_lumiere
 long temp_desactivation_lumiere_en_millis
 boolean lumiere_activation_millis
