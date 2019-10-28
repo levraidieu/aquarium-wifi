@@ -40,18 +40,30 @@ int filtre3OnTm = 0;
 int filtre3OffTh = 20;
 int filtre3OffTm = 0;
 
-long time_millis_nourriture
-boolean nourriture_activation_millis
-boolean nourriture_activation_millis
+long time_millis_nourriture ;
+boolean nourriture_activation_millis;
+boolean nourriture_activation_millis;
 
-boolean drapeau_prog_journaliere    // evite le conflit avec la prog jounaliere (s'active au debut de la journer)
-long time_millis_lumiere
-long temp_desactivation_lumiere_en_millis
-boolean lumiere_activation_millis
+boolean lumiere_drapeau ;   // evite le conflit avec la prog jounaliere (s'active au debut de la journer)
+long lumiere_drapeau_millis ;
+long time_millis_lumiere ;   //valeur millis + temps desactivation
+long temp_desactivation_lumiere_en_millis ;  //temps en milliseconde de la desactivation de la lumiere
+boolean lumiere_activation_millis ;           //activation routine web
 
-boolean lumiere_activation_journer
+boolean lumiere_activation_journer ;
 
+int drapeauTh = 6;
+int drapeauTm = 0;
 
+int re_init_drapeau24h () {
+    if ( t.hour  >= drapeauTh && t.hour <= (drapeauTh +1 ) ) {
+      if ( millis() >= ( lumiere_drapeau_millis + 86400000 ) ) {
+        lumiere_drapeau_millis = millis();
+        lumiere_drapeau = 1 ;
+    }
+    }
+
+}
 
 int LumierePrincipaleOnOff ( ) {
   if  ((t.hour  >= LumierePrincipaleOnTh   && t.min  >= LumierePrincipaleOnTm )
@@ -173,21 +185,22 @@ int nourriture_exeptionnelle() {
 ///////////////  lumiere web  //////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
-int lumiereWebMillis (){
+int lumiereWebMillisoff (){
   time_millis_lumiere = (millis() + temp_desactivation_lumiere_en_millis );
-  xxxxxxxnoms du relaislumiere  = 1;
-  lumiere_activation_millis = 1;
+  xxxxxxxnoms du relaislumiere  = 0;
+  lumiere_activation_millis = 1;  //active  la routine web
+  lumiere_drapeau = 0 ;           //desactive la routine principale
 }
 
 int lumiere_web_heure(){
   if ( lumiere_activation_millis == 1 ){
-    if (( millis() - time_millis_lumiere) < 0)){
-      lumiere  = 1;
-    }
-    else if (( millis() - time_millis_lumiere) >= 0)){
+    if (( millis() - time_millis_lumiere) <= 0)){    //a tester si <= ou <
       lumiere  = 0;
-      lumiere_activation_millis == 0;
-      //lumiere_activation_journer == 0;
+    }
+    else if (( millis() - time_millis_lumiere) > 0)){  //a tester si >= ou >
+      // lumiere  = 0;
+      lumiere_activation_millis = 0;
+      lumiere_drapeau = 0;
     }
   }
 }
@@ -195,15 +208,19 @@ int lumiere_web_heure(){
 int lumiere_web_journer(){
   if ( lumiere_activation_journer == 1 ){
     if (( millis() - time_millis_lumiere) < 0)){
-      lumiere  = 1;
+      LumierePrincipale  = 0;
+      lumierePETITE =0;
+      lumiere_drapeau = 0;
+
     }
     else if (( millis() - time_millis_lumiere) >= 0)){
-      lumiere  = 0;
-      lumiere_activation_journer == 0;
+      //lumiere  = 0;
+      //lumiere_activation_journer == 0;
+      lumiere_drapeau = 0;   // on laisse la prog journaliere gerer 
       //lumiere_activation_millis == 0;
     }
   }
-}
+} 
 
 
 
