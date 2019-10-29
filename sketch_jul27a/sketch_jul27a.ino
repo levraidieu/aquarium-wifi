@@ -110,6 +110,8 @@ boolean filtre3 = 0 ;
 boolean alarmeNiveauEau = 0  ;
 boolean voyant = 0 ;
 boolean chauffeEau = 0 ;
+
+boolean thermometre;
 byte thermometreInterieur = 0 ;
 byte thermometreExterieur = 0 ;
 byte thermometreExterieurLogia = 0 ;

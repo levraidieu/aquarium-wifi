@@ -56,6 +56,7 @@ boolean filtre_drapeau = 0;
 long time_millis_filtre;
 long temp_desactivation_filtre_en_millis;
 boolean filtre_activation_millis =0 ;
+boolean filtre_activation_journer ;
 
 boolean thermometre_drapeau = 0 ;
 
@@ -211,11 +212,11 @@ int nourriture_exeptionnelle()
 {
   if (nourriture_activation_millis == 1)
   { // verif si drapeau est active
-    if ((millis() - time_millis_nourriture) < 0))
+    if ((millis() - time_millis_nourriture) < 0)
       {                 //verif si le temps c'est ecouler
         nourriture = 1; // si condition vrai relais activer
       }
-    else if ((millis() - time_millis_nourriture) >= 0))
+    else if ((millis() - time_millis_nourriture) >= 0)
       { //si le temps est passer desativation du drapeau et du relais
         nourriture = 0;
         nourriture_activation_millis == 0;
@@ -238,12 +239,12 @@ int lumiere_web_heure()
 {
   if (lumiere_activation_millis == 1)
   {
-    if ((millis() - time_millis_lumiere) <= 0))
+    if ((millis() - time_millis_lumiere) <= 0)
       { //a tester si <= ou <
   lumierePETITE  =  LumierePrincipale = 0;
    lumiere_drapeau = 0;
       }
-    else if ((millis() - time_millis_lumiere) > 0))
+    else if ((millis() - time_millis_lumiere) > 0)
       { //a tester si >= ou >
         // lumiere  = 0;
         lumiere_activation_millis = 0;
@@ -256,7 +257,7 @@ int lumiere_web_journer()
 {
   if (lumiere_activation_journer == 1)
   {
-    if ((millis() - time_millis_lumiere) < 0))
+    if ((millis() - time_millis_lumiere) < 0)
       {
         LumierePrincipale = 0;
         lumierePETITE = 0;
