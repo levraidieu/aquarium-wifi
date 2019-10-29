@@ -48,6 +48,14 @@ boolean lumiere_activation_millis;         //activation routine web
 
 boolean lumiere_activation_journer;
 
+boolean nourriture_drapeau = 0;
+
+boolean filtre_drapeau = 0;
+long time_millis_filtre;
+long temp_desactivation_filtre_en_millis;
+boolean filtre_activation_millis =0 ;
+
+
 int drapeauTh = 6;
 int drapeauTm = 0;
 
@@ -59,6 +67,8 @@ int re_init_drapeau24h()
     {
       lumiere_drapeau_millis = millis();
       lumiere_drapeau = 1;
+      filtre_drapeau = 1;
+      nourriture_drapeau = 1;
     }
   }
 }
@@ -82,80 +92,98 @@ int lumierePETITEOnOff()
 {
   if (lumiere_drapeau == 1)
   {
-    if ((t.hour >= lumierePETITEOnTh && t.min >= lumierePETITEOnTm) || (t.hour <= lumierePETITEOffTh && t.min >= lumierePETITEOffTm))
+    if (lumiere_drapeau == 1)
     {
-      lumierePETITE = 1;
-    }
-    else
-    {
-      lumierePETITE = 0;
+      if ((t.hour >= lumierePETITEOnTh && t.min >= lumierePETITEOnTm) || (t.hour <= lumierePETITEOffTh && t.min >= lumierePETITEOffTm))
+      {
+        lumierePETITE = 1;
+      }
+      else
+      {
+        lumierePETITE = 0;
+      }
     }
   }
 }
 
 int nourritureOnOff()
 {
-  if ((t.hour >= nourritureOnTh && t.min >= nourritureOnTm) || (t.hour <= nourritureOffTh && t.min >= nourritureOffTm))
+  if (nourriture_drapeau == 1)
   {
-    nourriture = 1;
-  }
-  else
-  {
-    nourriture = 0;
-  }
-};
-
-int filtre1OnOff()
-{
-  if ((t.hour >= filtre1OnTh && t.min >= filtre1OnTm) || (t.hour <= filtre1OffTh && t.min >= filtre1OffTm))
-  {
-    filtre1 = 1;
-  }
-  else
-  {
-    filtre1 = 0;
-  }
-};
-
-int filtre2OnOff()
-{
-  if ((t.hour >= filtre2OnTh && t.min >= filtre2OnTm) || (t.hour <= filtre2OffTh && t.min >= filtre2OffTm))
-  {
-    filtre2 = 1;
-  }
-  else
-  {
-    filtre2 = 0;
-  }
-};
-
-int filtre3OnOff()
-{
-  if ((t.hour >= filtre3OnTh && t.min >= filtre3OnTm) || (t.hour <= filtre3OffTh && t.min >= filtre3OffTm))
-  {
-    filtre3 = 1;
-  }
-  else
-  {
-    filtre3 = 0;
-  }
-};
-
-int thermometreInterieurETEHIVER()
-{
-  if ((t.hour >= filtre3OnTh && t.min >= filtre3OnTm) || (t.hour <= filtre3OffTh && t.min >= filtre3OffTm))
-  {
-    filtre3 = 1;
-  }
-  else
-  {
-    filtre3 = 0;
+    if ((t.hour >= nourritureOnTh && t.min >= nourritureOnTm) || (t.hour <= nourritureOffTh && t.min >= nourritureOffTm))
+    {
+      nourriture = 1;
+    }
+    else
+    {
+      nourriture = 0;
+    }
   }
 }
 
-int desactivationLumiere(){
+int filtre1OnOff()
+{
+  if (filtre_drapeau == 1)
+  {
+    if ((t.hour >= filtre1OnTh && t.min >= filtre1OnTm) || (t.hour <= filtre1OffTh && t.min >= filtre1OffTm))
+    {
+      filtre1 = 1;
+    }
+    else
+    {
+      filtre1 = 0;
+    }
+  }
+}
 
-};
+int filtre2OnOff()
+{
+  if (filtre_drapeau == 1)
+  {
+    if ((t.hour >= filtre2OnTh && t.min >= filtre2OnTm) || (t.hour <= filtre2OffTh && t.min >= filtre2OffTm))
+    {
+      filtre2 = 1;
+    }
+    else
+    {
+      filtre2 = 0;
+    }
+  }
+}
+
+int filtre3OnOff()
+{
+  if (filtre_drapeau == 1)
+  {
+    if ((t.hour >= filtre3OnTh && t.min >= filtre3OnTm) || (t.hour <= filtre3OffTh && t.min >= filtre3OffTm))
+    {
+      filtre3 = 1;
+    }
+    else
+    {
+      filtre3 = 0;
+    }
+  }
+}
+
+int thermometreInterieurETEHIVER()
+{
+  if (lumiere_drapeau == 1)
+  {
+    if ((t.hour >= filtre3OnTh && t.min >= filtre3OnTm) || (t.hour <= filtre3OffTh && t.min >= filtre3OffTm))
+    {
+      filtre3 = 1;
+    }
+    else
+    {
+      filtre3 = 0;
+    }
+  }
+}
+
+int desactivationLumiere()
+{
+}
 
 ////////////////////////////////////////////////////////////////////
 ////////     nourriture web    /////////////////////////////////////
@@ -198,7 +226,7 @@ int nourriture_exeptionnelle()
 int lumiereWebMillisoff()
 {
   time_millis_lumiere = (millis() + temp_desactivation_lumiere_en_millis);
-  xxxxxxxnoms du relaislumiere = 0;
+  lumierePETITE  =  LumierePrincipale = 0;
   lumiere_activation_millis = 1; //active  la routine web
   lumiere_drapeau = 0;           //desactive la routine principale
 }
@@ -209,13 +237,14 @@ int lumiere_web_heure()
   {
     if ((millis() - time_millis_lumiere) <= 0))
       { //a tester si <= ou <
-        lumiere = 0;
+  lumierePETITE  =  LumierePrincipale = 0;
+   lumiere_drapeau = 0;
       }
     else if ((millis() - time_millis_lumiere) > 0))
       { //a tester si >= ou >
         // lumiere  = 0;
         lumiere_activation_millis = 0;
-        lumiere_drapeau = 0;
+        lumiere_drapeau = 1;
       }
   }
 }
@@ -236,9 +265,65 @@ int lumiere_web_journer()
         //lumiere_activation_journer == 0;
         lumiere_drapeau = 0; // on laisse la prog journaliere gerer
         //lumiere_activation_millis == 0;
+
       }
   }
 }
+
+
+//////////////////////////////////////////////////////////////
+//////// filtre  web /////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+
+int filtreWebMillisoff()
+{
+  time_millis_filtre = (millis() + temp_desactivation_filtre_en_millis);
+filtre1 = filtre2 = filtre3 =0;
+  filtre_activation_millis = 1; //active  la routine web
+  filtre_drapeau = 0;           //desactive la routine principale
+}
+
+int filtre_web_heure()
+{
+  if (filtre_activation_millis == 1)
+  {
+    if ((millis() - time_millis_filtre) <= 0))
+      { //a tester si <= ou <
+filtre1 = filtre2 = filtre3 =0;
+      }
+    else if ((millis() - time_millis_filtre) > 0))
+      { //a tester si >= ou >
+        // lumiere  = 0;
+        filtre_activation_millis = 0;
+        filtre_drapeau = 1;
+      }
+  }
+}
+
+int filtre_web_journer()
+{
+  if (filtre_activation_journer == 1)
+  {
+    if ((millis() - time_millis_filtre) < 0))
+      {
+filtre1 = filtre2 = filtre3 =0;
+        filtre_drapeau = 0;
+      }
+    else if ((millis() - time_millis_filtre) >= 0))
+      {
+
+        filtre_drapeau = 0; // on laisse la prog journaliere gerer
+
+      }
+  }
+}
+
+
+
+
+
+
 
 int progHoraire()
 {
