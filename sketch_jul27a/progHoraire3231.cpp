@@ -60,23 +60,26 @@ int re_init_drapeau24h () {
       if ( millis() >= ( lumiere_drapeau_millis + 86400000 ) ) {
         lumiere_drapeau_millis = millis();
         lumiere_drapeau = 1 ;
+      }
     }
-    }
-
 }
 
 int LumierePrincipaleOnOff ( ) {
-  if  ((t.hour  >= LumierePrincipaleOnTh   && t.min  >= LumierePrincipaleOnTm )
-   ||  (t.hour  <= LumierePrincipaleOffTh  && t.min  >= LumierePrincipaleOffTm )) {
-    LumierePrincipale  = 1;
+  if (lumiere_drapeau == 1 ) {
+    if  ((t.hour  >= LumierePrincipaleOnTh   && t.min  >= LumierePrincipaleOnTm )
+      || (t.hour  <= LumierePrincipaleOffTh  && t.min  >= LumierePrincipaleOffTm )) {
+      LumierePrincipale  = 1;
+      }
+    else {
+        LumierePrincipale  = 0;
+      }
+    }
+
   }
-  else 
-  {
-    LumierePrincipale  = 0;
-  }
-  };
+  
 
 int lumierePETITEOnOff ( ) {
+    if (lumiere_drapeau == 1 ) {
   if  ((t.hour  >= lumierePETITEOnTh   && t.min  >= lumierePETITEOnTm )
    ||  (t.hour  <= lumierePETITEOffTh  && t.min  >= lumierePETITEOffTm )) {
     lumierePETITE  = 1;
@@ -85,7 +88,8 @@ int lumierePETITEOnOff ( ) {
   {
     lumierePETITE  = 0;
   }
-  };
+  }
+    }
 
 int nourritureOnOff ( ) {
   if  ((t.hour  >= nourritureOnTh   && t.min  >= nourritureOnTm )
