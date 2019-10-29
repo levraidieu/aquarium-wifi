@@ -57,7 +57,7 @@ long time_millis_filtre;
 long temp_desactivation_filtre_en_millis;
 boolean filtre_activation_millis =0 ;
 
-thermometre_drapeau = 0 ;
+boolean thermometre_drapeau = 0 ;
 
 int drapeauTh = 6; //horaire re-init drapeau
 int drapeauTm = 0; //horaire re-init drapeau
@@ -262,7 +262,7 @@ int lumiere_web_journer()
         lumierePETITE = 0;
         lumiere_drapeau = 0;
       }
-    else if ((millis() - time_millis_lumiere) >= 0))
+    else if ((millis() - time_millis_lumiere) >= 0)
       {
         //lumiere  = 0;
         //lumiere_activation_journer == 0;
@@ -291,11 +291,11 @@ int filtre_web_heure()
 {
   if (filtre_activation_millis == 1)
   {
-    if ((millis() - time_millis_filtre) <= 0))
+    if ((millis() - time_millis_filtre) <= 0)
       { //a tester si <= ou <
 filtre1 = filtre2 = filtre3 =0;
       }
-    else if ((millis() - time_millis_filtre) > 0))
+    else if ((millis() - time_millis_filtre) > 0)
       { //a tester si >= ou >
         // lumiere  = 0;
         filtre_activation_millis = 0;
@@ -308,12 +308,12 @@ int filtre_web_journer()
 {
   if (filtre_activation_journer == 1)
   {
-    if ((millis() - time_millis_filtre) < 0))
+    if ((millis() - time_millis_filtre) < 0)
       {
 filtre1 = filtre2 = filtre3 =0;
         filtre_drapeau = 0;
       }
-    else if ((millis() - time_millis_filtre) >= 0))
+    else if ((millis() - time_millis_filtre) >= 0)
       {
 
         filtre_drapeau = 0; // on laisse la prog journaliere gerer
