@@ -36,9 +36,11 @@ int filtre3OnTm = 0;
 int filtre3OffTh = 20;
 int filtre3OffTm = 0;
 
+boolean nourriture_drapeau = 0;
 long time_millis_nourriture;
+long temp_desactivation_nourriture_en_millis;
 boolean nourriture_activation_millis;
-boolean nourriture_activation_millis;
+
 
 boolean lumiere_drapeau; // evite le conflit avec la prog jounaliere (s'active au debut de la journer)
 long lumiere_drapeau_millis;
@@ -48,16 +50,17 @@ boolean lumiere_activation_millis;         //activation routine web
 
 boolean lumiere_activation_journer;
 
-boolean nourriture_drapeau = 0;
+
 
 boolean filtre_drapeau = 0;
 long time_millis_filtre;
 long temp_desactivation_filtre_en_millis;
 boolean filtre_activation_millis =0 ;
 
+thermometre_drapeau = 0 ;
 
-int drapeauTh = 6;
-int drapeauTm = 0;
+int drapeauTh = 6; //horaire re-init drapeau
+int drapeauTm = 0; //horaire re-init drapeau
 
 int re_init_drapeau24h()
 {
@@ -168,15 +171,15 @@ int filtre3OnOff()
 
 int thermometreInterieurETEHIVER()
 {
-  if (lumiere_drapeau == 1)
+  if (thermometre_drapeau == 1)
   {
-    if ((t.hour >= filtre3OnTh && t.min >= filtre3OnTm) || (t.hour <= filtre3OffTh && t.min >= filtre3OffTm))
+    if ((t.mon >= 6) || (t.mon <= 9))
     {
-      filtre3 = 1;
+      thermometre = 1;
     }
     else
     {
-      filtre3 = 0;
+      thermometre = 0;
     }
   }
 }
@@ -191,7 +194,7 @@ int desactivationLumiere()
 
 int nourritureWebMillis()
 {
-  time_millis_nourriture = (millis() + 3000);
+  time_millis_nourriture = (millis() + temp_desactivation_nourriture_en_millis);
   nourriture = 1;                   // relais nourriture en marche
   nourriture_activation_millis = 1; // activatio d'un drapeau nourriture
 }
