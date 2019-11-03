@@ -25,7 +25,7 @@ web
   lien thingspeak
   affichage temperature
   horaire marche/arret relais
-  activation desactivation relais (et si desactitoin un fois ou plusieur fois)
+  activation desactivation relais (et si desactivation un fois ou plusieur fois)
   modification horaire
 
 boutonAquarium
@@ -37,6 +37,7 @@ boutonAquarium
 led
   alarme
   relais
+  etat du wifi
 
 ntp
 
