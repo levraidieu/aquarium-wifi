@@ -13,9 +13,10 @@ lcd-sms
   temperature
   alerte
     relais
-    horloge
-    horaire etatRelais
-
+    horloge 
+    etatRelais
+    tension pile ds3231 bas
+    
 prog-horaire
   horloge ds3231
   millis
