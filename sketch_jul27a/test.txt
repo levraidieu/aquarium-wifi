@@ -7,3 +7,11 @@ totootootootootoootootootootoo
 
 
 lkjlhj
+
+
+4 DS1820 2
+6 LCD 6
+2 RELAY 2
+4 CLAVIER 2 (1)
+
+NE PAS UTILISER A4 A5
