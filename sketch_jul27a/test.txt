@@ -14,4 +14,4 @@ lkjlhj
 2 RELAY 2
 4 CLAVIER 2 (1)
 
-NE PAS UTILISER A4 A5
+NE PAS UTILISER (A4 A5 (i2c )) et rx tx
