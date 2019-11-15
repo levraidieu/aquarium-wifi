@@ -1,5 +1,5 @@
-(module ESP12F-Devkit-V3-fred-GPIO (layer F.Cu) (tedit 5DCCA88C)
-  (tags "esp 8266 nodemcu dev_kit")
+(module ESP12F-Devkit-V3-fred-GPIO (layer F.Cu) (tedit 5DCDC350)
+  (tags "esp 8266 nodemcu dev_kit WIFI")
   (fp_text reference REF** (at 0.635 -1.27 90) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
