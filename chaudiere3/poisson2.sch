@@ -20,7 +20,7 @@ U 1 1 5DBA3CB3
 P 9700 9300
 F 0 "J1" H 9750 10017 50  0000 C CNN
 F 1 "Conn_02x12_Top_Bottom" H 9750 9926 50  0000 C CNN
-F 2 "atx:atx_couder" H 9700 9300 50  0001 C CNN
+F 2 "atx:atx_couder_femelle" H 9700 9300 50  0001 C CNN
 F 3 "~" H 9700 9300 50  0001 C CNN
 	1    9700 9300
 	1    0    0    -1  
@@ -1903,4 +1903,116 @@ Wire Wire Line
 	8650 9000 8650 9400
 Wire Wire Line
 	8650 9400 9500 9400
+Wire Wire Line
+	5700 2450 5700 3350
+Wire Wire Line
+	5700 3350 5350 3350
+Wire Wire Line
+	5350 3350 5350 3200
+$Comp
+L Connector:Conn_01x02_Female J27
+U 1 1 5DE62A45
+P 7500 2400
+F 0 "J27" H 7528 2376 50  0000 L CNN
+F 1 "Conn_01x02_Female" H 7528 2285 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 7500 2400 50  0001 C CNN
+F 3 "~" H 7500 2400 50  0001 C CNN
+	1    7500 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0121
+U 1 1 5DE62A50
+P 7300 2550
+F 0 "#PWR0121" H 7300 2300 50  0001 C CNN
+F 1 "GND" H 7305 2377 50  0000 C CNN
+F 2 "" H 7300 2550 50  0001 C CNN
+F 3 "" H 7300 2550 50  0001 C CNN
+	1    7300 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7300 2500 7300 2550
+Wire Wire Line
+	7150 2400 7150 2900
+Wire Wire Line
+	7150 2900 5350 2900
+Wire Wire Line
+	7150 2400 7300 2400
+$Comp
+L Connector:Conn_01x02_Female J28
+U 1 1 5DE98A8F
+P 6050 2450
+F 0 "J28" H 6078 2426 50  0000 L CNN
+F 1 "Conn_01x02_Female" H 6078 2335 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 6050 2450 50  0001 C CNN
+F 3 "~" H 6050 2450 50  0001 C CNN
+	1    6050 2450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0120
+U 1 1 5DE98A99
+P 5850 2600
+F 0 "#PWR0120" H 5850 2350 50  0001 C CNN
+F 1 "GND" H 5855 2427 50  0000 C CNN
+F 2 "" H 5850 2600 50  0001 C CNN
+F 3 "" H 5850 2600 50  0001 C CNN
+	1    5850 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5850 2550 5850 2600
+Wire Wire Line
+	5700 2450 5850 2450
+$Comp
+L Connector:Conn_01x02_Female J26
+U 1 1 5DEA936F
+P 6050 2200
+F 0 "J26" H 6078 2176 50  0000 L CNN
+F 1 "Conn_01x02_Female" H 6078 2085 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 6050 2200 50  0001 C CNN
+F 3 "~" H 6050 2200 50  0001 C CNN
+	1    6050 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0122
+U 1 1 5DEA9379
+P 5850 2350
+F 0 "#PWR0122" H 5850 2100 50  0001 C CNN
+F 1 "GND" H 5855 2177 50  0000 C CNN
+F 2 "" H 5850 2350 50  0001 C CNN
+F 3 "" H 5850 2350 50  0001 C CNN
+	1    5850 2350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5850 2300 5850 2350
+Wire Wire Line
+	5700 2200 5850 2200
+Wire Wire Line
+	5700 2200 5700 2450
+Connection ~ 5700 2450
+$Comp
+L Device:CP C1
+U 1 1 5DED850E
+P 11050 8750
+F 0 "C1" H 11168 8796 50  0000 L CNN
+F 1 "CP" H 11168 8705 50  0000 L CNN
+F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 11088 8600 50  0001 C CNN
+F 3 "~" H 11050 8750 50  0001 C CNN
+	1    11050 8750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11050 8600 10750 8600
+Wire Wire Line
+	10750 8600 10750 8800
+Wire Wire Line
+	10750 8800 10550 8800
+Wire Wire Line
+	11050 8900 11050 9000
+Wire Wire Line
+	11050 9000 10200 9000
 $EndSCHEMATC
