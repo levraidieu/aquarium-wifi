@@ -8,6 +8,11 @@
 #include "secrets.h"
 
 
+//led
+int fredledgauche =16;
+int fredleddroite =14;
+
+
 //thingspeak
 unsigned long myChannelNumber = SECRET_CH_ID;
 const char * myWriteAPIKey = SECRET_WRITE_APIKEY;
@@ -24,7 +29,7 @@ WiFiClient client;
 
 // millis
 int intervalAffichage = 2000;
-int intervalThingSpeak =20000;
+int intervalThingSpeak =900000;
 unsigned long previousMillis = 0;
 unsigned long previousMillisThingspeak ;
 
@@ -50,17 +55,30 @@ float ballon = 0;
 
 float demandeTemperatureChaudiere(){
   sondeTemperatureChaudiere.requestTemperatures();
+    while ((sondeTemperatureBallon.getTempCByIndex(0) <= -100 )){ //&&( erreur < 65500)
+        sondeTemperatureBallon.requestTemperatures();
+//        erreur++ ;
+  }
   return sondeTemperatureChaudiere.getTempCByIndex(0);
 }
 
 float demandeTemperatureBallon(){
-  sondeTemperatureBallon.requestTemperatures();
+//  sondeTemperatureBallon.requestTemperatures();
+//  unsigned short erreur =0;
+  while ((sondeTemperatureBallon.getTempCByIndex(0) <= (-100,DEC) )){ //&&( erreur < 65500)
+        sondeTemperatureBallon.requestTemperatures();
+//        erreur++ ;
+  }
   return sondeTemperatureBallon.getTempCByIndex(0);
 }
   
 void setup() {
-delay(10000);
+ digitalWrite(fredledgauche , HIGH);
+ digitalWrite(fredleddroite , HIGH);
 
+delay(10000);
+ digitalWrite(fredledgauche , LOW);
+ digitalWrite(fredleddroite , LOW);
 
 
   
@@ -80,9 +98,11 @@ sondeTemperatureChaudiere.begin();
  
   ThingSpeak.begin(client);  // Initialize ThingSpeak
 
-
+  WiFi.hostname("esp8266chaudiere");
   while (WiFi.status() != WL_CONNECTED) {
+    digitalWrite(fredledgauche , HIGH);
     delay(500);
+    digitalWrite(fredledgauche , LOW);
     Serial.print(".");
   }
   Serial.println("");
@@ -121,7 +141,7 @@ numerobis++;
    numerobis = numeroter ;
     Serial.print (  "  " ) ;
      Serial.println(  numeroter );
-
+ digitalWrite(fredleddroite , HIGH);
 
 chaudiere = demandeTemperatureChaudiere();
 ballon = demandeTemperatureBallon();
@@ -158,10 +178,12 @@ Serial.println();
 //      Serial.println("\xB0");
   
 Serial.println();
+    delay(500);
+ digitalWrite(fredleddroite , LOW);
 
 }
   ThingSpeak.setField(1, chaudiere);
-  ThingSpeak.setField(2, ballon);
+  ThingSpeak.setField(2, demandeTemperatureBallon());
 
  if ((currentMillis - previousMillisThingspeak) >= intervalThingSpeak ) {
     // save the last time you blinked the LED
@@ -170,6 +192,10 @@ Serial.println();
   int x = ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);
   if(x == 200){
     Serial.println("                                                                              Channel update successful.");
+    digitalWrite(fredledgauche , HIGH);
+    delay(500);
+    digitalWrite(fredledgauche , LOW);    
+    
   }
   else{
     Serial.println("                                                                              Probleme mise a jour thingspeak. HTTP error code " + String(x));
