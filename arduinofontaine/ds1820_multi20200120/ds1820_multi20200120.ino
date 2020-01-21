@@ -36,6 +36,9 @@ float numeroter =0;
 //Temp Sensors pin
 const int sondeTemperatureChaudierePin = 10;//15
 const int sondeTemperatureBallonPin = 14;
+unsigned int ds1820erreur = 1000;
+
+
 
 //Setup OneWire
 OneWire sondeTemperatureChaudiereOneWire(sondeTemperatureChaudierePin);
@@ -215,7 +218,7 @@ float demandeTemperatureChaudiere(){
   delay (500);
     ESP.wdtFeed();
  }
- while ((sondeTemperatureChaudiere.getTempCByIndex(0) >= -127)|| (erreur <=100));
+ while ((sondeTemperatureChaudiere.getTempCByIndex(0) >= -127)|| (erreur <= ds1820erreur ));
   Serial.println ("fin          boucle demandeTemperatureChaudiere");
   return sondeTemperatureChaudiere.getTempCByIndex(0);
 }
@@ -235,6 +238,6 @@ float demandeTemperatureBallon(){
       ESP.wdtFeed();
     
  }
- while ( (sondeTemperatureBallon.getTempCByIndex(0),DEC == -127)||(erreur <=100));
+ while ( (sondeTemperatureBallon.getTempCByIndex(0),DEC == -127)||(erreur <= ds1820erreur));
   return sondeTemperatureBallon.getTempCByIndex(0);
 }

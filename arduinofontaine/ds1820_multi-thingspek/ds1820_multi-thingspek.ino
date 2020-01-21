@@ -3,10 +3,13 @@
 #include <Wire.h>
 
 #include <ESP8266WiFi.h>
+#include <WiFiClient.h>;
+#include <ESP8266WebServer.h>
 
 #include <ThingSpeak.h>
 #include "secrets.h"
-
+//#include "fonction.h"
+//#include "variables.h"
 
 //led
 int fredledgauche =16;
@@ -22,7 +25,7 @@ const char* SSID = SECRET_SSID;
 const char* password = SECRET_PASS;
 
 // Create the ESP Web Server on port 80
-WiFiServer WebServer(80);
+WiFiServer wifiServer(80);
 // Web Client
 WiFiClient client;
 
@@ -43,8 +46,8 @@ const int sondeTemperatureChaudierePin = 15;
 const int sondeTemperatureBallonPin = 14;
 
 //Setup OneWire
-OneWire sondeTemperatureChaudiereOneWire(sondeTemperatureChaudierePin);
-OneWire sondeTemperatureBallonOneWire(sondeTemperatureBallonPin);
+OneWire sondeTemperatureChaudiereOneWire(&sondeTemperatureChaudierePin);
+OneWire sondeTemperatureBallonOneWire(&sondeTemperatureBallonPin);
 
 //Setup temp sensors
 DallasTemperature sondeTemperatureChaudiere(&sondeTemperatureChaudiereOneWire);
@@ -53,24 +56,7 @@ DallasTemperature sondeTemperatureBallon(&sondeTemperatureBallonOneWire);
 float chaudiere = 0;
 float ballon = 0;
 
-float demandeTemperatureChaudiere(){
-  sondeTemperatureChaudiere.requestTemperatures();
-    while ((sondeTemperatureBallon.getTempCByIndex(0) <= -100 )){ //&&( erreur < 65500)
-        sondeTemperatureBallon.requestTemperatures();
-//        erreur++ ;
-  }
-  return sondeTemperatureChaudiere.getTempCByIndex(0);
-}
 
-float demandeTemperatureBallon(){
-//  sondeTemperatureBallon.requestTemperatures();
-//  unsigned short erreur =0;
-  while ((sondeTemperatureBallon.getTempCByIndex(0) <= (-100,DEC) )){ //&&( erreur < 65500)
-        sondeTemperatureBallon.requestTemperatures();
-//        erreur++ ;
-  }
-  return sondeTemperatureBallon.getTempCByIndex(0);
-}
   
 void setup() {
  digitalWrite(fredledgauche , HIGH);
@@ -84,7 +70,7 @@ delay(10000);
   
 Serial.begin( 115200 );
   Serial.print( "initialisation port serie\n" );
-sondeTemperatureChaudiere.begin();
+  sondeTemperatureChaudiere.begin();
   sondeTemperatureBallon.begin();
 
   // Connect to WiFi network
